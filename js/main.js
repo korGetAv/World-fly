@@ -1,0 +1,130 @@
+'use strict';
+
+// Image background
+function ibg_init() {
+    let ibg = document.querySelectorAll('.ibg');
+    for (let i = 0; i < ibg.length; i++) {
+        if (ibg[i].querySelector('img')) {
+            ibg[i].style.backgroundImage = 'url(' + ibg[i].querySelector('img').getAttribute('src') + ')';
+        }
+    }
+}
+ibg_init();
+
+// Navigation
+function navigation_init() {
+    let burgerIcon = document.querySelector('.burger__icon');
+    let burgerNav = document.querySelector('.burger__nav');
+
+    if (burgerIcon && burgerNav) {
+        // Burger icon
+        burgerIcon.addEventListener('click', () => {
+            document.body.classList.toggle('_lock');
+            burgerIcon.classList.toggle('_active');
+            burgerNav.classList.toggle('_active');
+        })
+    }
+}
+navigation_init();
+
+// Tab
+function tab_init() {
+    let id = 2;
+    let tab = document.querySelector('.price__tab');
+    if (tab) {
+        // Tab switch
+        let tabLinks = tab.querySelectorAll('.tab__link');
+        if (tabLinks.length > 0) {
+            for (let tabLink of tabLinks) {
+                let link = tabLink.querySelector('a');
+                let tabBody = tab.querySelector(link.hash);
+                link.addEventListener('click', (e) => {
+                    tabLinks.forEach(tabLink => {
+                        let link = tabLink.querySelector('a');
+                        let tabBody = tab.querySelector(link.hash);
+                        if (link.classList.contains('_active')) {
+                            link.classList.remove('_active');
+                        }
+                        if (tabBody.classList.contains('_active')) {
+                            tabBody.classList.remove('_active');
+                        }
+                    })
+
+                    link.classList.toggle('_active');
+                    tabBody.classList.add('_active');
+
+                    e.preventDefault();
+                });
+            }
+        }
+
+        // Tab add tour
+        let tabItem = tab.querySelector('.tab__item').cloneNode(true);
+
+        let tabRemoveHTML = `
+        <button class="tab__remove-button">
+            <img src="img/price/ic_close.svg" alt="close icon">
+        </button>`
+        tabItem.insertAdjacentHTML('beforeend', tabRemoveHTML);
+
+        let tabAdd = tab.querySelector('.tab__add-button');
+        tabAdd.addEventListener('click', (e) => {
+            let tabItemHTML = tabItem.outerHTML;
+            tabItemHTML = tabItemHTML.replaceAll('_0', `_${id}`);
+            id++;
+
+            tabAdd.insertAdjacentHTML('beforebegin', tabItemHTML);
+
+            let resetButtons = tabAdd.previousElementSibling.querySelectorAll('.reset');
+            for (let resetButton of resetButtons) {
+                inputResetButton(resetButton);
+            }
+
+            let tabItems = tab.querySelectorAll('.tab__item');
+            let tabRemove = tabAdd.previousElementSibling.querySelector('.tab__remove-button');
+            tabRemove.addEventListener('click', (e) => {
+                tabRemove.parentNode.remove();
+
+                if (tabItems.length <= 6) {
+                    tabAdd.style.display = '';
+                }
+
+                e.preventDefault();
+            })
+
+            if (tabItems.length >= 6) {
+                tabAdd.style.display = 'none';
+            }
+
+            e.preventDefault();
+        })
+
+        // Input reset
+        let resetButtons = tab.querySelectorAll('.reset');
+        if (resetButtons.length > 0) {
+            for (let resetButton of resetButtons) {
+                inputResetButton(resetButton);
+            }
+        }
+
+        function inputResetButton(resetButton) {
+            let input = resetButton.parentNode.querySelector('input');
+            input.addEventListener('input', inputHundler);
+            function inputHundler() {
+                if (input.value.length > 0) {
+                    resetButton.classList.add('_active');
+                } else {
+                    resetButton.classList.remove('_active');
+                }
+            }
+            inputHundler();
+
+            resetButton.addEventListener('click', () => {
+                input.value = '';
+                inputHundler();
+                input.focus();
+            })
+        }
+    }
+}
+tab_init();

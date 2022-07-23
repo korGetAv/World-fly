@@ -1,0 +1,242 @@
+/*=============== Fonts ====================================================================================================================================================================*/
+
+@font-face {
+  font-family: "DmSerif";
+  font-display: swap;
+  src: url("../fonts/DmSerif400.woff") format("woff"), url("../fonts/DmSerif400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "DenkOne";
+  font-display: swap;
+  src: url("../fonts/DenkOne400.woff") format("woff"), url("../fonts/DenkOne400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  font-display: swap;
+  src: url("../fonts/SegoeUI400.woff") format("woff"), url("../fonts/SegoeUI400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  font-display: swap;
+  src: url("../fonts/SegoeUI600.woff") format("woff"), url("../fonts/SegoeUI600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SegoeUI";
+  font-display: swap;
+  src: url("../fonts/SegoeUI700.woff") format("woff"), url("../fonts/SegoeUI700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/*=============== /Fonts ====================================================================================================================================================================*/
+
+/*=============== Nullstyle ====================================================================================================================================================================*/
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 14px;
+  line-height: 22px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a,
+button,
+input[type=submit] {
+  display: inline-block;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: 400;
+}
+
+li {
+  list-style-type: none;
+}
+
+/*=============== /Nullstyle ====================================================================================================================================================================*/
+
+/*=============== Options ====================================================================================================================================================================*/
+
+body {
+  font-family: "SegoeUI";
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+}
+
+.page-wrapper {
+  min-height: 100%;
+  min-width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1 1 auto;
+}
+
+.main > * {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1245px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.ibg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.ibg img {
+  display: none;
+}
+
+/*=============== /Options ====================================================================================================================================================================*/
+
+/*=============== Common Styles ====================================================================================================================================================================*/
+
+input,
+button {
+  transition: box-shadow 0.2s ease 0s;
+}
+
+input:focus,
+button:focus {
+  box-shadow: inset 0px 0px 3px #009394;
+}
+
+._button {
+  background: #2a3950;
+  border-radius: 6px;
+  padding: 8px 33px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.3s ease 0s;
+  border: 2px solid #fff;
+}
+
+._button:hover {
+  transform: translateY(-2px);
+}
+
+._button:active {
+  transform: scale(0.95);
+}
+
+/*=============== /Common Styles ====================================================================================================================================================================*/
+
+/*=============== Pointer ====================================================================================================================================================================*/
+
+@media (pointer: fine) {
+  a,
+  button,
+  label,
+  input[type=submit],
+  input[type=checkbox],
+  .reset,
+  ._isButton {
+    cursor: pointer;
+  }
+}
+
+@media (pointer: coarse) {
+  a,
+  button,
+  label,
+  input[type=submit],
+  input[type=checkbox],
+  .reset,
+  ._isButton {
+    cursor: default;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
