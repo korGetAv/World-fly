@@ -6,27 +6,16 @@ let destinationSelector = destinationSwiperWrapper.querySelector('.swiper');
 const destinationSwiper = new Swiper(destinationSelector, {
     freeMode: true,
     grabCursor: true,
-    slidesPerView: 1.2,
-    spaceBetween: 15,
+    slidesPerView: 'auto',
+    spaceBetween: 30,
     breakpoints: {
         768: {
-            slidesPerView: 1.2,
             spaceBetween: 40,
         },
         860: {
-            slidesPerView: 1.3,
-            spaceBetween: 60,
-        },
-        1024: {
-            slidesPerView: 1.3,
-            spaceBetween: 60,
-        },
-        1160: {
-            slidesPerView: 1.5,
             spaceBetween: 60,
         },
         1340: {
-            slidesPerView: 1.7,
             spaceBetween: 75,
         }
     }
