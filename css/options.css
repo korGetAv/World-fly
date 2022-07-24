@@ -40,6 +40,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "iconfont";
+  src: url("../fonts/iconfont.woff") format("woff"), url("../fonts/iconfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 /*=============== /Fonts ====================================================================================================================================================================*/
 
 /*=============== Nullstyle ====================================================================================================================================================================*/
@@ -175,7 +182,7 @@ body {
   position: relative;
 }
 
-.ibg img {
+.ibg > img {
   display: none;
 }
 
@@ -212,6 +219,25 @@ button:focus {
   transform: scale(0.95);
 }
 
+[class^=icon-]::after,
+[class*=" icon-"]::after {
+  font-family: "iconfont";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow::after {
+  content: "\f004";
+}
+
 /*=============== /Common Styles ====================================================================================================================================================================*/
 
 /*=============== Pointer ====================================================================================================================================================================*/
@@ -224,7 +250,7 @@ button:focus {
   input[type=checkbox],
   .reset,
   ._isButton {
-    cursor: pointer;
+    cursor: pointer !important;
   }
 }
 
@@ -236,7 +262,7 @@ button:focus {
   input[type=checkbox],
   .reset,
   ._isButton {
-    cursor: default;
+    cursor: default !important;
     -webkit-tap-highlight-color: transparent;
   }
 }

@@ -1,18 +1,17 @@
 'use strict';
 
 // Image background
-function ibg_init() {
+const ibg_init = function () {
     let ibg = document.querySelectorAll('.ibg');
     for (let i = 0; i < ibg.length; i++) {
         if (ibg[i].querySelector('img')) {
             ibg[i].style.backgroundImage = 'url(' + ibg[i].querySelector('img').getAttribute('src') + ')';
         }
     }
-}
-ibg_init();
+}();
 
 // Navigation
-function navigation_init() {
+const navigation_init = function () {
     let burgerIcon = document.querySelector('.burger__icon');
     let burgerNav = document.querySelector('.burger__nav');
 
@@ -24,11 +23,10 @@ function navigation_init() {
             burgerNav.classList.toggle('_active');
         })
     }
-}
-navigation_init();
+}();
 
 // Tab
-function tab_init() {
+const tab_init = function () {
     let id = 2;
     let tab = document.querySelector('.price__tab');
     if (tab) {
@@ -126,5 +124,35 @@ function tab_init() {
             })
         }
     }
-}
-tab_init();
+}();
+
+const destination_init = function () {
+    let destinationSwiperWrapper = document.querySelector('.destination__swiper-wrapper');
+    let slideIcons = destinationSwiperWrapper.querySelectorAll('.slide__icon');
+    for (let slideIcon of slideIcons) {
+        slideIcon.addEventListener('click', (e) => {
+            let slideCount = slideIcon.querySelector('.slide__count');
+            if (slideIcon.classList.contains('_active')) {
+                slideIcon.classList.remove('_active');
+                slideCount.innerHTML = +slideCount.innerHTML - 1;
+            } else {
+                slideIcon.classList.add('_active');
+                slideCount.innerHTML = +slideCount.innerHTML + 1;
+            }
+
+            e.preventDefault();
+        });
+    }
+}();
+
+const package_init = function () {
+    let packageSelectWrapper = document.querySelector('.package__select-wrapper');
+    let packageSelect = document.querySelector('.package__select');
+
+    packageSelect.addEventListener('click', () => {
+        packageSelectWrapper.classList.toggle('_active');
+    })
+    packageSelect.addEventListener('blur', () => {
+        packageSelectWrapper.classList.remove('_active');
+    })
+}();
